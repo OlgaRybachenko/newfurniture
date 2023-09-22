@@ -5,9 +5,11 @@ import { Items } from './components/Items/Items';
 import Categories from './components/Categories';
 import ShowFullItem from './components/ShowFullItem';
 
-const App = () => {
+function App() {
   const [orders, setOrders] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
+  const [showFullItem, setShowFullItem] = useState(false);
+  const [fullItem, setFullItem] = useState({});
   const items = [
     {
       id: 1,
@@ -249,31 +251,28 @@ const App = () => {
         category: 'dressers',
         price: '534'
       },
-    ]
-  const [showFullItem, setShowFullItem] = useState(false);
-  const [fullItem, setFullItem] = useState({});
-
-  const addToOrder = item => {
+    ];
+  const addToOrder = (item) => {
     let isInArray = false;
-    orders.forEach(el => {
+    orders.forEach((el) => {
       if (el.id === item.id) isInArray = true;
     });
     if (!isInArray) setOrders([...orders, item]);
   };
 
-  const deleteOrder = id => {
-    setOrders(orders.filter(el => el.id !== id));
+  const deleteOrder = (id) => {
+    setOrders(orders.filter((el) => el.id !== id));
   };
 
-  const chooseCategory = category => {
+  const chooseCategory = (category) => {
     if (category === 'all') {
       setCurrentItems(items);
       return;
     }
-    setCurrentItems(currentItems.filter(el => el.category === category));
+    setCurrentItems(currentItems.filter((el) => el.category === category));
   };
 
-  const onShowItem = item => {
+  const onShowItem = (item) => {
     setFullItem(item);
     setShowFullItem(!showFullItem);
   };
