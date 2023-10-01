@@ -254,6 +254,7 @@ function App() {
     ];
   const addToOrder = (item) => {
     let isInArray = false;
+    console.log('Orders', orders);
     orders.forEach((el) => {
       if (el.id === item.id) isInArray = true;
     });

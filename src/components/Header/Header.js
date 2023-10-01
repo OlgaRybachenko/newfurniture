@@ -5,8 +5,8 @@ import './Header.css';
 
 
 
-const showOrders = ({ orders, onDelete }) => {
-  let summa = 0
+const showOrders = ( orders, onDelete ) => {
+  let summa = 0;
   orders.forEach(el => summa += Number.parseFloat(el.price))
   return (
     <div>
@@ -35,7 +35,7 @@ export const Header = ({ orders, onDelete }) => {
         <FaCartPlus onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`} />
         {cartOpen && (
           <div className='shop-cart'>
-            {orders.length > 0 ?
+            {orders && orders.length > 0 ?
               showOrders(orders, onDelete) : showNothing()}
           </div>
         )}
